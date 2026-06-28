@@ -101,7 +101,7 @@ inner join orders o
 on c.customer_id=o.customer_id
 group by c.customer_name,o.customer_id;
 
-#display the customer who placed the most recent order
+#display the customer who placed the most recent_order
 select c.customer_name,o.order_date
 from customers c
 left join orders o
@@ -109,4 +109,11 @@ on c.customer_id=o.customer_id
 order by o.order_date desc
 limit 1;
 
-#
+#show each customers number of orders
+select c.customer_id,c.customer_name,
+    count(o.order_id) as Num_of_orders
+from customers c
+left join orders o
+on c.customer_id=o.customer_id
+group by c.customer_id,
+         c.customer_name;
